@@ -52,7 +52,13 @@ def main():
         for asteroid in asteroids:
             if asteroid.colliding(Nave_triangular):
                print("Game over!")
-               return 
+               return
+        
+            for shot in shots:
+                if asteroid.colliding(shot):
+                    shot.kill()
+                    asteroid.kill()
+
 
 
         pygame.display.flip()
