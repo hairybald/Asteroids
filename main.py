@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     pygame.init()
@@ -13,13 +14,15 @@ def main():
     dt = 0
 
     # Groups
-    updateable = pygame.sprite.Group()
+    updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     # Containers
-    Player.containers = (updateable, drawable)
-    Asteroid.containers = (updateable, drawable, asteroids)
-    AsteroidField.containers = (updateable)
+    Player.containers = (updatable, drawable)
+    Asteroid.containers = (updatable, drawable, asteroids)
+    AsteroidField.containers = (updatable)
+    Shot.containers = (shots, updatable, drawable)
 
 
     # Nave_triangular
@@ -43,7 +46,7 @@ def main():
         for item in drawable:
             item.draw(screen)
 
-        for item in updateable:
+        for item in updatable:
             item.update(dt)
 
         for asteroid in asteroids:
