@@ -22,6 +22,7 @@ def main():
         # Fills the screen with the color black
         screen.fill("black")
         Nave_triangular.draw(screen)
+        Nave_triangular.update(dt)
         pygame.display.flip()
 
          # Determines the fps and defines dt taking it as reference
